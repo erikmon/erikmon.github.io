@@ -50,6 +50,7 @@ class StaticSiteTests(unittest.TestCase):
             html,
         )
         self.assertIn("Desarrollador de aplicaciones especializado en Android", parser.body_text)
+        self.assertIn("Enfoque y arquitectura", parser.body_text)
         self.assertIn('href="/terretatrad/"', html)
         self.assertIn('href="/mdnote/"', html)
         self.assertIn(
@@ -65,12 +66,18 @@ class StaticSiteTests(unittest.TestCase):
         self.assertIn("Traduce entre castellano y valenciano.", text)
         self.assertIn("Escribe y edita notas en Markdown.", text)
 
-    def test_home_project_links_have_local_icons(self):
+    def test_home_project_links_have_local_icons_and_only_two_apps(self):
         parser = parse(ROOT / "index.html")
         icons = [img["src"] for img in parser.attrs.get("img", [])]
         for name in ("terretatrad", "mdnote"):
             self.assertIn(f"/assets/{name}.webp", icons)
-        self.assertIn("ML Node", parser.body_text)
+        self.assertNotIn("ML Node", parser.body_text)
+        badges = [
+            link for link in parser.attrs.get("a", [])
+            if "store-badge" in link.get("class", "")
+        ]
+        self.assertGreaterEqual(len(badges), 3)
+        self.assertIn("svg", parser.tags)
 
     def test_each_page_uses_the_studio_favicon(self):
         for route in ("", "terretatrad", "mdnote"):
@@ -81,22 +88,24 @@ class StaticSiteTests(unittest.TestCase):
         self.assertEqual(tuple(int.from_bytes(png[i:i + 4], "big") for i in (16, 20)), (512, 512))
         self.assertEqual(png[24:26], bytes([8, 6]))  # 8 bits per RGBA channel
 
-    def test_detail_pages_have_titles_descriptions_and_play_links(self):
+    def test_detail_pages_have_titles_descriptions_badges_and_features(self):
         expected = {
             "terretatrad": (
                 "TerretaTrad",
                 "Traduce entre castellano y valenciano, guarda traducciones y compártelas.",
                 "com.erikmp.terretatrad",
                 "TerretaTrad · Erik Monsonís Pérez",
+                "Qué es TerretaTrad",
             ),
             "mdnote": (
                 "mdNote",
                 "Escribe y edita notas en Markdown con vista previa.",
                 "com.erikmp.mdnote",
                 "mdNote · Erik Monsonís Pérez",
+                "Qué es mdNote",
             ),
         }
-        for route, (name, description, package_name, title) in expected.items():
+        for route, (name, description, package_name, title, overview_heading) in expected.items():
             path = ROOT / route / "index.html"
             parser = parse(path)
             html = path.read_text(encoding="utf-8")
@@ -104,13 +113,22 @@ class StaticSiteTests(unittest.TestCase):
             self.assertIn('href="../"', html)
             self.assertIn(name, parser.body_text)
             self.assertIn(description, parser.body_text)
+            self.assertIn(overview_heading, parser.body_text)
+            self.assertIn("Funcionalidades principales", parser.body_text)
             self.assertIn(f"<title>{title}</title>", html)
             self.assertIn(f'<meta name="description" content="{description}">', html)
-            self.assertIn("Google Play", parser.body_text)
+            self.assertIn("Disponible en Google Play", parser.body_text)
             self.assertIn("iOS En desarrollo", parser.body_text)
             self.assertIn("Próximamente", parser.body_text)
+            self.assertNotIn("ML Node", parser.body_text)
             links = [link.get("href") for link in parser.attrs["a"]]
             self.assertIn(f"https://play.google.com/store/apps/details?id={package_name}", links)
+            play_badges = [
+                link for link in parser.attrs["a"]
+                if "store-badge--play" in link.get("class", "")
+            ]
+            self.assertEqual(len(play_badges), 1)
+            self.assertIn("svg", parser.tags)
             if route == "terretatrad":
                 self.assertIn("https://terretatrad.com/", links)
             self.assertIn(package_name, html)
@@ -124,6 +142,7 @@ class StaticSiteTests(unittest.TestCase):
         self.assertIn("#24211e", css)
         self.assertIn("#a24d30", css)
         self.assertIn(":focus-visible", css)
+        self.assertIn("subgrid", css)
         self.assertNotIn("radial-gradient", css)
         self.assertNotIn("backdrop-filter", css)
         self.assertNotIn("box-shadow", css)

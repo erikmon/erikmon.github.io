@@ -18,6 +18,7 @@
         </a>
         <nav class="nav" aria-label="Navegación principal">
           <a href="../#apps">Proyectos</a>
+          <a href="../#enfoque">Enfoque</a>
           <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
@@ -25,23 +26,93 @@
       <main>
         <article class="detail" aria-labelledby="app-title">
           <a class="back-link" href="../#apps"><span aria-hidden="true">←</span> Volver a proyectos</a>
-          <div class="detail-heading">
-            <img class="app-icon" src="/assets/mdnote.webp" width="80" height="80" alt="">
-            <h1 id="app-title">mdNote</h1>
-          </div>
-          <p class="detail-copy">Escribe y edita notas en Markdown con vista previa.</p>
 
-          <div class="detail-links">
-            <a class="detail-link" href="https://play.google.com/store/apps/details?id=com.erikmp.mdnote">Ver en Google Play <span aria-hidden="true">↗</span></a>
-          </div>
+          <header class="detail-header">
+            <div class="detail-heading">
+              <img class="app-icon" src="/assets/mdnote.webp" width="88" height="88" alt="">
+              <div class="detail-title-group">
+                <p class="eyebrow">Notas y documentos Markdown</p>
+                <h1 id="app-title">mdNote</h1>
+              </div>
+            </div>
+            <p class="detail-copy">Escribe y edita notas en Markdown con vista previa.</p>
+
+            <div class="detail-links store-badges">
+              <a class="store-badge store-badge--play" href="https://play.google.com/store/apps/details?id=com.erikmp.mdnote">
+                <svg class="badge-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M4 2.5L13.6 12 4 21.5c-.3-.3-.5-.8-.5-1.4V3.9c0-.6.2-1.1.5-1.4Z"/>
+                  <path fill="#34A853" d="M4 2.5l12.2 6.98L13.6 12 4 2.5Z"/>
+                  <path fill="#FBBC04" d="M16.2 9.48l3.7 2.12c.7.4.7.4 0 .8l-3.7 2.12L13.6 12l2.6-2.52Z"/>
+                  <path fill="#EA4335" d="M13.6 12l2.6 2.52L4 21.5 13.6 12Z"/>
+                </svg>
+                <span class="badge-text">
+                  <span class="badge-kicker">Disponible en</span>
+                  <span class="badge-title">Google Play</span>
+                </span>
+              </a>
+
+              <span class="store-badge store-badge--status">
+                <svg class="badge-icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M16.52 12.46c-.02-2.17 1.77-3.22 1.85-3.27-1.01-1.48-2.58-1.68-3.13-1.7-1.32-.14-2.6.79-3.28.79-.68 0-1.72-.77-2.83-.75-1.45.02-2.79.85-3.54 2.15-1.52 2.63-.39 6.52 1.08 8.65.72 1.04 1.58 2.21 2.71 2.17 1.09-.04 1.5-.7 2.82-.7 1.31 0 1.69.7 2.83.68 1.17-.02 1.91-1.06 2.62-2.11.83-1.21 1.17-2.38 1.19-2.44-.03-.01-2.3-.88-2.32-3.47ZM14.37 6.08c.6-.73 1.01-1.74.9-2.75-.87.04-1.93.58-2.55 1.31-.55.64-1.04 1.67-.91 2.66.97.08 1.96-.49 2.56-1.22Z"/>
+                </svg>
+                <span class="badge-text">
+                  <span class="badge-kicker">Próximamente en</span>
+                  <span class="badge-title">iOS · En desarrollo</span>
+                </span>
+              </span>
+            </div>
+          </header>
+
+          <section class="detail-section detail-overview" aria-labelledby="overview-title">
+            <h2 id="overview-title">Qué es mdNote</h2>
+            <p>mdNote es un editor de notas y documentos en Markdown pensado para escribir sin distracciones y conservar tus archivos siempre bajo tu control. Trabaja directamente sobre archivos locales en texto plano para que nunca dependas de bases de datos cerradas.</p>
+            <p>Combina una escritura ágil con vista previa renderizada en tiempo real, permitiendo revisar encabezados, listas, tablas o bloques de código al instante antes de guardar o exportar.</p>
+          </section>
+
+          <section class="detail-section" aria-labelledby="features-title">
+            <h2 id="features-title">Funcionalidades principales</h2>
+            <div class="feature-grid">
+              <article class="feature-card">
+                <h3>Edición en texto plano</h3>
+                <p>Abre, crea y edita archivos <code>.md</code> locales con autoguardado fiable y compatibilidad directa con cualquier otro editor.</p>
+              </article>
+              <article class="feature-card">
+                <h3>Vista previa enriquecida</h3>
+                <p>Previsualización clara de títulos, listas de tareas, tablas, citas, enlaces y fragmentos de código con tipografía legible.</p>
+              </article>
+              <article class="feature-card">
+                <h3>Exportación y compartición</h3>
+                <p>Comparte tus documentos como archivo Markdown, texto plano, HTML o PDF listos para enviar o archivar.</p>
+              </article>
+              <article class="feature-card">
+                <h3>Flujo ligero y portable</h3>
+                <p>Gestión ágil de archivos recientes y carpetas locales sin permisos invasivos ni sincronizaciones obligatorias en la nube.</p>
+              </article>
+            </div>
+          </section>
 
           <section class="availability" aria-labelledby="availability-title">
-            <h2 id="availability-title">Disponibilidad</h2>
+            <h2 id="availability-title">Ficha técnica y disponibilidad</h2>
             <dl>
               <div><dt>Android</dt><dd>Disponible en Google Play</dd></div>
               <div><dt>iOS</dt><dd>En desarrollo. Próximamente.</dd></div>
+              <div><dt>Formato</dt><dd>Archivos locales Markdown (<code>.md</code>) y texto plano UTF-8</dd></div>
+              <div><dt>Tecnología</dt><dd>Kotlin, Jetpack Compose y Kotlin Multiplatform</dd></div>
+              <div><dt>Paquete</dt><dd><code>com.erikmp.mdnote</code></dd></div>
             </dl>
           </section>
+
+          <aside class="other-project" aria-label="Otro proyecto del estudio">
+            <p class="eyebrow">Otro proyecto</p>
+            <a class="other-project-link" href="../terretatrad/">
+              <img class="app-icon" src="/assets/terretatrad.webp" width="52" height="52" alt="">
+              <span>
+                <strong>TerretaTrad</strong>
+                <span>Traduce entre castellano y valenciano, guarda traducciones y compártelas.</span>
+              </span>
+              <span class="app-arrow" aria-hidden="true">→</span>
+            </a>
+          </aside>
         </article>
       </main>
 
