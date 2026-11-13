@@ -1,4 +1,3 @@
-import re
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -45,35 +44,54 @@ class StaticSiteTests(unittest.TestCase):
         parser = parse(path)
         html = path.read_text(encoding="utf-8")
         self.assertIn('href="styles.css"', html)
-        self.assertIn("<title>Erik Monsonís Pérez · Desarrollo aplicaciones Android</title>", html)
+        self.assertIn("<title>Erik Monsonís Pérez · Desarrollo de aplicaciones</title>", html)
         self.assertIn(
-            '<meta name="description" content="Portfolio de Erik Monsonís Pérez: desarrollo de aplicaciones Android.">',
+            '<meta name="description" content="Portfolio de Erik Monsonís Pérez, desarrollador de aplicaciones especializado en Android.">',
             html,
         )
-        self.assertIn("Desarrollo aplicaciones Android", parser.body_text)
+        self.assertIn("Desarrollador de aplicaciones especializado en Android", parser.body_text)
         self.assertIn('href="/terretatrad/"', html)
         self.assertIn('href="/mdnote/"', html)
-        self.assertIn("LinkedIn", parser.body_text)
+        self.assertIn(
+            "https://www.linkedin.com/in/erikmonsonisperez/",
+            [link.get("href") for link in parser.attrs["a"]],
+        )
         self.assertIn("<main", html)
         self.assertNotIn("<script", html.lower())
         self.assertNotIn("<style", html.lower())
 
     def test_home_app_descriptions_are_short_and_factual(self):
         text = parse(ROOT / "index.html").body_text
-        self.assertIn("Traducción valenciana.", text)
-        self.assertIn("Notas Markdown.", text)
+        self.assertIn("Traduce entre castellano y valenciano.", text)
+        self.assertIn("Escribe y edita notas en Markdown.", text)
+
+    def test_home_project_links_have_local_icons(self):
+        parser = parse(ROOT / "index.html")
+        icons = [img["src"] for img in parser.attrs.get("img", [])]
+        for name in ("terretatrad", "mdnote"):
+            self.assertIn(f"/assets/{name}.webp", icons)
+        self.assertIn("ML Node", parser.body_text)
+
+    def test_each_page_uses_the_studio_favicon(self):
+        for route in ("", "terretatrad", "mdnote"):
+            links = parse(ROOT / route / "index.html").attrs["link"]
+            self.assertIn({"rel": "icon", "type": "image/svg+xml", "href": "/assets/monograma.svg"}, links)
+        png = (ROOT / "assets/developer-icon.png").read_bytes()
+        self.assertEqual(png[:8], b"\x89PNG\r\n\x1a\n")
+        self.assertEqual(tuple(int.from_bytes(png[i:i + 4], "big") for i in (16, 20)), (512, 512))
+        self.assertEqual(png[24:26], bytes([8, 6]))  # 8 bits per RGBA channel
 
     def test_detail_pages_have_titles_descriptions_and_play_links(self):
         expected = {
             "terretatrad": (
                 "TerretaTrad",
-                "Traducción valenciana.",
+                "Traduce entre castellano y valenciano, guarda traducciones y compártelas.",
                 "com.erikmp.terretatrad",
                 "TerretaTrad · Erik Monsonís Pérez",
             ),
             "mdnote": (
                 "mdNote",
-                "Notas Markdown.",
+                "Escribe y edita notas en Markdown con vista previa.",
                 "com.erikmp.mdnote",
                 "mdNote · Erik Monsonís Pérez",
             ),
@@ -89,6 +107,12 @@ class StaticSiteTests(unittest.TestCase):
             self.assertIn(f"<title>{title}</title>", html)
             self.assertIn(f'<meta name="description" content="{description}">', html)
             self.assertIn("Google Play", parser.body_text)
+            self.assertIn("iOS En desarrollo", parser.body_text)
+            self.assertIn("Próximamente", parser.body_text)
+            links = [link.get("href") for link in parser.attrs["a"]]
+            self.assertIn(f"https://play.google.com/store/apps/details?id={package_name}", links)
+            if route == "terretatrad":
+                self.assertIn("https://terretatrad.com/", links)
             self.assertIn(package_name, html)
             self.assertIn("<main", html)
             self.assertNotIn("<script", html.lower())
@@ -100,19 +124,23 @@ class StaticSiteTests(unittest.TestCase):
         self.assertIn("#24211e", css)
         self.assertIn("#a24d30", css)
         self.assertIn(":focus-visible", css)
-        self.assertIn("max-width: 760px", css)
         self.assertNotIn("radial-gradient", css)
         self.assertNotIn("backdrop-filter", css)
         self.assertNotIn("box-shadow", css)
 
     def test_local_links_target_existing_files(self):
         for path in [ROOT / "index.html", ROOT / "terretatrad/index.html", ROOT / "mdnote/index.html"]:
-            html = path.read_text(encoding="utf-8")
-            for href in re.findall(r'href=["\']([^"\']+)["\']', html):
-                if href.startswith(("http://", "https://", "mailto:", "#", "/")):
+            parser = parse(path)
+            urls = [attrs.get(attr) for tag, attr in (("a", "href"), ("link", "href"), ("img", "src"))
+                    for attrs in parser.attrs.get(tag, [])]
+            for url in urls:
+                if not url or url.startswith(("http://", "https://", "mailto:", "#")):
                     continue
-                target = (path.parent / Path(href.split("#", 1)[0])).resolve()
-                self.assertTrue(target.exists(), f"Missing local href {href}")
+                local = url.split("#", 1)[0]
+                target = ROOT / local.lstrip("/") if local.startswith("/") else path.parent / local
+                if target.is_dir():
+                    target /= "index.html"
+                self.assertTrue(target.is_file(), f"Missing local URL {url}")
 
 
 if __name__ == "__main__":

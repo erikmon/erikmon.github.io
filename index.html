@@ -3,46 +3,62 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Erik Monsonís Pérez · Desarrollo aplicaciones Android</title>
-    <meta name="description" content="Portfolio de Erik Monsonís Pérez: desarrollo de aplicaciones Android.">
+    <title>Erik Monsonís Pérez · Desarrollo de aplicaciones</title>
+    <meta name="description" content="Portfolio de Erik Monsonís Pérez, desarrollador de aplicaciones especializado en Android.">
+    <link rel="icon" type="image/svg+xml" href="/assets/monograma.svg">
+    <link rel="apple-touch-icon" href="/assets/developer-icon.png">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="site">
       <header class="site-header">
-        <a class="brand" href="#top">Erik Monsonís Pérez</a>
+        <a class="brand" href="./" aria-label="Erik Monsonís Pérez · Inicio">
+          <img src="/assets/monograma.svg" width="38" height="38" alt="">
+          <span>Erik Monsonís</span>
+        </a>
         <nav class="nav" aria-label="Navegación principal">
-          <a href="#apps">Apps</a>
-          <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn</a>
+          <a href="#apps">Proyectos</a>
+          <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
 
-      <main id="top">
+      <main>
         <section class="intro" aria-labelledby="intro-title">
-          <p class="eyebrow">Desarrollo aplicaciones Android</p>
+          <p class="eyebrow">Estudio independiente</p>
           <h1 id="intro-title">Erik Monsonís Pérez</h1>
+          <p class="intro-copy">Desarrollador de aplicaciones especializado en Android</p>
         </section>
 
         <section id="apps" aria-labelledby="apps-title">
           <div class="section-heading">
-            <p class="eyebrow">Proyectos</p>
-            <h2 id="apps-title">Apps</h2>
+            <h2 id="apps-title">Proyectos</h2>
+            <p class="eyebrow">Aplicaciones propias</p>
           </div>
 
-          <ul class="app-list">
-            <li class="app-item">
-              <a class="app-link" href="/terretatrad/">
-                <span>TerretaTrad</span>
-                <span class="app-arrow" aria-hidden="true">↗</span>
+          <ul class="app-list" role="list">
+            <li>
+              <a class="app-row" href="/terretatrad/">
+                <img class="app-icon" src="/assets/terretatrad.webp" width="60" height="60" alt="">
+                <span class="app-copy">
+                  <span class="app-name">TerretaTrad</span>
+                  <span class="app-description">Traduce entre castellano y valenciano.</span>
+                </span>
+                <span class="app-arrow" aria-hidden="true">→</span>
               </a>
-              <p class="app-description">Traducción valenciana.</p>
             </li>
-            <li class="app-item">
-              <a class="app-link" href="/mdnote/">
-                <span>mdNote</span>
-                <span class="app-arrow" aria-hidden="true">↗</span>
+            <li>
+              <a class="app-row" href="/mdnote/">
+                <img class="app-icon" src="/assets/mdnote.webp" width="60" height="60" alt="">
+                <span class="app-copy">
+                  <span class="app-name">mdNote</span>
+                  <span class="app-description">Escribe y edita notas en Markdown.</span>
+                </span>
+                <span class="app-arrow" aria-hidden="true">→</span>
               </a>
-              <p class="app-description">Notas Markdown.</p>
+            </li>
+            <li class="project-note">
+              <span>ML Node</span>
+              <span>Próximamente también en iOS.</span>
             </li>
           </ul>
         </section>
@@ -50,7 +66,7 @@
 
       <footer class="site-footer">
         <small>© 2026 Erik Monsonís Pérez</small>
-        <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
       </footer>
     </div>
   </body>

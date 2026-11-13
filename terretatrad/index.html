@@ -4,35 +4,51 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TerretaTrad · Erik Monsonís Pérez</title>
-    <meta name="description" content="Traducción valenciana.">
+    <meta name="description" content="Traduce entre castellano y valenciano, guarda traducciones y compártelas.">
+    <link rel="icon" type="image/svg+xml" href="/assets/monograma.svg">
+    <link rel="apple-touch-icon" href="/assets/developer-icon.png">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
     <div class="site">
       <header class="site-header">
-        <a class="brand" href="../">Erik Monsonís Pérez</a>
+        <a class="brand" href="../" aria-label="Erik Monsonís Pérez · Inicio">
+          <img src="/assets/monograma.svg" width="38" height="38" alt="">
+          <span>Erik Monsonís</span>
+        </a>
         <nav class="nav" aria-label="Navegación principal">
-          <a href="../#apps">Apps</a>
-          <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn</a>
+          <a href="../#apps">Proyectos</a>
+          <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
 
       <main>
         <article class="detail" aria-labelledby="app-title">
-          <a class="back-link" href="../">← Inicio</a>
-          <p class="eyebrow">Aplicación Android</p>
-          <h1 id="app-title">TerretaTrad</h1>
-          <p class="detail-copy">Traducción valenciana.</p>
-          <a class="play-link" href="https://play.google.com/store/apps/details?id=com.erikmp.terretatrad&amp;hl=es_419&amp;gl=US">
-            <span>Ver en Google Play</span>
-            <span aria-hidden="true">↗</span>
-          </a>
+          <a class="back-link" href="../#apps"><span aria-hidden="true">←</span> Volver a proyectos</a>
+          <div class="detail-heading">
+            <img class="app-icon" src="/assets/terretatrad.webp" width="80" height="80" alt="">
+            <h1 id="app-title">TerretaTrad</h1>
+          </div>
+          <p class="detail-copy">Traduce entre castellano y valenciano, guarda traducciones y compártelas.</p>
+
+          <div class="detail-links">
+            <a class="detail-link" href="https://play.google.com/store/apps/details?id=com.erikmp.terretatrad">Ver en Google Play <span aria-hidden="true">↗</span></a>
+            <a class="detail-link" href="https://terretatrad.com/">Web de TerretaTrad <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <section class="availability" aria-labelledby="availability-title">
+            <h2 id="availability-title">Disponibilidad</h2>
+            <dl>
+              <div><dt>Android</dt><dd>Disponible en Google Play</dd></div>
+              <div><dt>iOS</dt><dd>En desarrollo. Próximamente.</dd></div>
+            </dl>
+          </section>
         </article>
       </main>
 
       <footer class="site-footer">
         <small>© 2026 Erik Monsonís Pérez</small>
-        <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
       </footer>
     </div>
   </body>
