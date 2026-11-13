@@ -92,6 +92,13 @@ class StaticSiteTests(unittest.TestCase):
         self.assertEqual(tuple(int.from_bytes(png[i:i + 4], "big") for i in (16, 20)), (512, 512))
         self.assertEqual(png[24:26], bytes([8, 6]))  # 8 bits per RGBA channel
 
+    def test_developer_header_matches_google_play_specs(self):
+        header = (ROOT / "assets/developer-header.png").read_bytes()
+        self.assertEqual(header[:8], b"\x89PNG\r\n\x1a\n")
+        self.assertEqual(tuple(int.from_bytes(header[i:i + 4], "big") for i in (16, 20)), (4096, 2304))
+        self.assertEqual(header[24:26], bytes([8, 2]))  # 24-bit RGB without alpha
+        self.assertLessEqual(len(header), 1_000_000)
+
     def test_detail_pages_have_titles_descriptions_badges_and_features(self):
         expected = {
             "terretatrad": (
