@@ -81,8 +81,12 @@ class StaticSiteTests(unittest.TestCase):
 
     def test_each_page_uses_the_studio_favicon(self):
         for route in ("", "terretatrad", "mdnote"):
-            links = parse(ROOT / route / "index.html").attrs["link"]
+            html = (ROOT / route / "index.html").read_text(encoding="utf-8")
+            parser = parse(ROOT / route / "index.html")
+            links = parser.attrs["link"]
             self.assertIn({"rel": "icon", "type": "image/svg+xml", "href": "/assets/monograma.svg"}, links)
+            self.assertIn("/assets/monograma.svg", [img.get("src") for img in parser.attrs.get("img", [])])
+            self.assertNotIn("<span>Erik Monsonís</span>", html)
         png = (ROOT / "assets/developer-icon.png").read_bytes()
         self.assertEqual(png[:8], b"\x89PNG\r\n\x1a\n")
         self.assertEqual(tuple(int.from_bytes(png[i:i + 4], "big") for i in (16, 20)), (512, 512))

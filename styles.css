@@ -67,8 +67,9 @@ code {
 
 .site-header { border-bottom: 1px solid var(--line); }
 .brand, .nav { display: flex; align-items: center; }
-.brand { gap: 0.65rem; font-weight: 680; letter-spacing: -0.02em; }
-.brand img { border-radius: 0.45rem; }
+.brand { border-radius: 0.55rem; }
+.brand img { border-radius: 0.55rem; transition: transform 150ms ease; }
+.brand:hover img, .brand:focus-visible img { transform: scale(1.04); }
 .nav { flex-wrap: wrap; gap: 0.4rem clamp(0.8rem, 3vw, 2rem); }
 .nav, .site-footer { color: var(--muted); font-size: 0.875rem; }
 .nav a { padding-block: 0.4rem; }
@@ -551,11 +552,16 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brand img,
   .project-card,
   .store-badge,
   .other-project-link,
   .app-arrow {
     transition: none;
   }
-  .other-project-link:hover .app-arrow { transform: none; }
+  .brand:hover img,
+  .brand:focus-visible img,
+  .other-project-link:hover .app-arrow {
+    transform: none;
+  }
 }
