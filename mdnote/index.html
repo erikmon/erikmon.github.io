@@ -7,13 +7,20 @@
     <meta name="description" content="Escribe y edita notas en Markdown con vista previa.">
     <link rel="icon" type="image/svg+xml" href="/assets/monograma.svg">
     <link rel="apple-touch-icon" href="/assets/developer-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../site.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
     <div class="site">
       <header class="site-header">
         <a class="brand" href="../" aria-label="Erik Monsonís Pérez · Inicio">
-          <img src="/assets/monograma.svg" width="42" height="42" alt="">
+          <img src="/assets/monograma.svg" width="34" height="34" alt="">
+          <span>Especificación de producto</span>
         </a>
         <nav class="nav" aria-label="Navegación principal">
           <a href="../#apps">Proyectos</a>
@@ -22,18 +29,19 @@
         </nav>
       </header>
 
-      <main>
+      <main id="contenido">
         <article class="detail" aria-labelledby="app-title">
           <a class="back-link" href="../#apps"><span aria-hidden="true">←</span> Volver a proyectos</a>
 
           <header class="detail-header">
             <div class="detail-heading">
-              <img class="app-icon" src="/assets/mdnote.webp" width="88" height="88" alt="">
-              <div class="detail-title-group">
-                <p class="eyebrow">Notas y documentos Markdown</p>
+              <div class="detail-title-row">
+                <img class="app-icon" src="/assets/mdnote.webp" width="76" height="76" alt="">
                 <h1 id="app-title">mdNote</h1>
               </div>
+              <span class="status-dot">Google Play</span>
             </div>
+
             <p class="detail-copy">Escribe y edita notas en Markdown con vista previa.</p>
 
             <div class="detail-links store-badges">
@@ -62,28 +70,40 @@
             </div>
           </header>
 
-          <section class="detail-section detail-overview" aria-labelledby="overview-title">
+          <section class="detail-section" aria-labelledby="overview-title">
             <h2 id="overview-title">Qué es mdNote</h2>
-            <p>mdNote es un editor de notas y documentos en Markdown pensado para escribir sin distracciones y conservar tus archivos siempre bajo tu control. Trabaja directamente sobre archivos locales en texto plano para que nunca dependas de bases de datos cerradas.</p>
-            <p>Combina una escritura ágil con vista previa renderizada en tiempo real, permitiendo revisar encabezados, listas, tablas o bloques de código al instante antes de guardar o exportar.</p>
+            <div class="detail-overview">
+              <div class="detail-overview-prose">
+                <p>mdNote es un editor de notas y documentos en Markdown pensado para escribir sin distracciones y conservar tus archivos siempre bajo tu control. Trabaja directamente sobre archivos locales en texto plano para que nunca dependas de bases de datos cerradas.</p>
+                <p>Combina una escritura ágil con vista previa renderizada en tiempo real, permitiendo revisar encabezados, listas, tablas o bloques de código al instante antes de guardar o exportar.</p>
+              </div>
+              <aside class="detail-spec-sheet" aria-label="Resumen técnico de mdNote">
+                <dl class="spec-table spec-table--sheet">
+                  <div class="spec-row"><dt>Paquete</dt><dd>com.erikmp.mdnote</dd></div>
+                  <div class="spec-row"><dt>Formato</dt><dd>.md local · UTF-8</dd></div>
+                  <div class="spec-row"><dt>Motor UI</dt><dd>Jetpack Compose</dd></div>
+                  <div class="spec-row"><dt>Núcleo</dt><dd>Kotlin Multiplatform</dd></div>
+                </dl>
+              </aside>
+            </div>
           </section>
 
           <section class="detail-section" aria-labelledby="features-title">
             <h2 id="features-title">Funcionalidades principales</h2>
-            <div class="feature-grid">
-              <article class="feature-card">
+            <div class="feature-ledger">
+              <article class="feature-item">
                 <h3>Edición en texto plano</h3>
                 <p>Abre, crea y edita archivos <code>.md</code> locales con autoguardado fiable y compatibilidad directa con cualquier otro editor.</p>
               </article>
-              <article class="feature-card">
+              <article class="feature-item">
                 <h3>Vista previa enriquecida</h3>
                 <p>Previsualización clara de títulos, listas de tareas, tablas, citas, enlaces y fragmentos de código con tipografía legible.</p>
               </article>
-              <article class="feature-card">
+              <article class="feature-item">
                 <h3>Exportación y compartición</h3>
                 <p>Comparte tus documentos como archivo Markdown, texto plano, HTML o PDF listos para enviar o archivar.</p>
               </article>
-              <article class="feature-card">
+              <article class="feature-item">
                 <h3>Flujo ligero y portable</h3>
                 <p>Gestión ágil de archivos recientes y carpetas locales sin permisos invasivos ni sincronizaciones obligatorias en la nube.</p>
               </article>
@@ -102,7 +122,7 @@
           </section>
 
           <aside class="other-project" aria-label="Otro proyecto del estudio">
-            <p class="eyebrow">Otro proyecto</p>
+            <h2>Otro proyecto</h2>
             <a class="other-project-link" href="../terretatrad/">
               <img class="app-icon" src="/assets/terretatrad.webp" width="52" height="52" alt="">
               <span>
@@ -117,7 +137,11 @@
 
       <footer class="site-footer">
         <small>© 2026 Erik Monsonís Pérez</small>
-        <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
+        <div class="footer-links">
+          <a href="../">Inicio</a>
+          <a href="../terretatrad/">TerretaTrad</a>
+          <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
       </footer>
     </div>
   </body>

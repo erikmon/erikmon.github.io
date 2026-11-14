@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T01:30:00+01:00",
+  "title": "Design System: Erik Monsonís Pérez · Hoja Técnica Suiza",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Signal Rust Ink",
+        "canonical": "#b53a0e",
+        "tonalRamp": ["#3a1103", "#5c1b06", "#7a2407", "#962e09", "#b53a0e", "#d94f1e", "#ed825a", "#fbe3da"]
+      },
+      "primary-signal": {
+        "role": "primary",
+        "displayName": "Signal Orange Dot",
+        "canonical": "#d94f1e",
+        "tonalRamp": ["#421405", "#682008", "#8f2d0d", "#b53a0e", "#d94f1e", "#e87043", "#f3a07f", "#fde9e1"]
+      },
+      "neutral-ground": {
+        "role": "neutral",
+        "displayName": "Drafting Gray Ground",
+        "canonical": "#eceff3",
+        "tonalRamp": ["#111418", "#2c3540", "#475260", "#768393", "#9aa5b4", "#bfc7d1", "#dce1e8", "#eceff3"]
+      },
+      "neutral-surface": {
+        "role": "neutral",
+        "displayName": "Technical Sheet White",
+        "canonical": "#f8fafc",
+        "tonalRamp": ["#111418", "#334155", "#64748b", "#94a3b8", "#cbd5e1", "#e2e8f0", "#f1f5f9", "#f8fafc"]
+      },
+      "neutral-ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#111418",
+        "tonalRamp": ["#111418", "#1f242c", "#2c3540", "#475260", "#687586", "#9aa5b4", "#cfd6df", "#eceff3"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Single-line portfolio masthead scaling via container inline units."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and app dossier page titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project card names and subsection titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Primary editorial and functional product copy at 65ch ceiling."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Package identifiers, key-value spec tables, and live status metadata only."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+        "purpose": "Snappy architectural state transitions on hover, filter toggle, and focus."
+      },
+      {
+        "name": "ease-enter",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Single 560ms hero settle on initial load, disabled under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      { "name": "tablet", "value": "960px" },
+      { "name": "mobile", "value": "576px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Google Play Action Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Primary high-contrast rectangular CTA pointing to Google Play Store listings.",
+      "html": "<a class=\"ds-btn-play\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"#4285F4\" d=\"M4 2.5L13.6 12 4 21.5c-.3-.3-.5-.8-.5-1.4V3.9c0-.6.2-1.1.5-1.4Z\"/><path fill=\"#34A853\" d=\"M4 2.5l12.2 6.98L13.6 12 4 2.5Z\"/><path fill=\"#FBBC04\" d=\"M16.2 9.48l3.7 2.12c.7.4.7.4 0 .8l-3.7 2.12L13.6 12l2.6-2.52Z\"/><path fill=\"#EA4335\" d=\"M13.6 12l2.6 2.52L4 21.5 13.6 12Z\"/></svg><span class=\"ds-btn-text\"><span class=\"ds-btn-kicker\">Disponible en</span><span class=\"ds-btn-title\">Google Play</span></span></a>",
+      "css": ".ds-btn-play { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 46px; padding: 0.45rem 1rem; background: var(--ink, #111418); color: var(--surface, #f8fafc); border: 1px solid var(--ink, #111418); border-radius: 0; font-family: 'Golos Text', sans-serif; text-decoration: none; transition: background-color 140ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 140ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 90ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-btn-play:hover { background: var(--accent-ink, #b53a0e); border-color: var(--accent-ink, #b53a0e); transform: translateY(-1px); } .ds-btn-play:focus-visible { outline: 2px solid var(--focus, #b53a0e); outline-offset: 2px; } .ds-btn-text { display: flex; flex-direction: column; line-height: 1.15; } .ds-btn-kicker { font-size: 0.75rem; font-weight: 500; color: #cbd5e1; } .ds-btn-title { font-size: 0.9rem; font-weight: 700; }"
+    },
+    {
+      "name": "Web Release Action Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action paired beside Google Play CTA when an app also ships on the web.",
+      "html": "<a class=\"ds-btn-web\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3.6 9h16.8M3.6 15h16.8M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18\"/></svg><span class=\"ds-btn-text\"><span class=\"ds-btn-kicker\">Web oficial</span><span class=\"ds-btn-title\">terretatrad.com ↗</span></span></a>",
+      "css": ".ds-btn-web { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 46px; padding: 0.45rem 1rem; background: var(--bg, #eceff3); color: var(--ink, #111418); border: 1px solid var(--line, #bfc7d1); border-radius: 0; font-family: 'Golos Text', sans-serif; text-decoration: none; transition: background-color 140ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 140ms cubic-bezier(0.2, 0.8, 0.2, 1), transform 90ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-btn-web:hover { background: var(--surface-alt, #e2e7ee); border-color: var(--ink, #111418); transform: translateY(-1px); } .ds-btn-web:focus-visible { outline: 2px solid var(--focus, #b53a0e); outline-offset: 2px; } .ds-btn-text { display: flex; flex-direction: column; line-height: 1.15; } .ds-btn-kicker { font-size: 0.75rem; font-weight: 500; color: var(--muted, #475260); } .ds-btn-title { font-size: 0.9rem; font-weight: 700; }"
+    },
+    {
+      "name": "Segmented Platform Filter Bar",
+      "kind": "chip",
+      "refersTo": "chip-segmented",
+      "description": "Single-row 3-option Swiss segmented switch isolating distinct release scopes.",
+      "html": "<div class=\"ds-filter-bar\" role=\"group\"><button type=\"button\" class=\"ds-filter-btn\" aria-pressed=\"true\">Todas (2)</button><button type=\"button\" class=\"ds-filter-btn\" aria-pressed=\"false\">Con web (1)</button><button type=\"button\" class=\"ds-filter-btn\" aria-pressed=\"false\">Solo móvil (1)</button></div>",
+      "css": ".ds-filter-bar { display: inline-flex; background: var(--surface, #f8fafc); border: 1px solid var(--line, #bfc7d1); border-radius: 0; } .ds-filter-btn { appearance: none; font-family: 'Golos Text', sans-serif; font-size: 0.85rem; font-weight: 500; white-space: nowrap; min-height: 44px; padding: 0.5rem 0.85rem; background: transparent; color: var(--muted, #475260); border: 0; border-right: 1px solid var(--line, #bfc7d1); border-radius: 0; cursor: pointer; } .ds-filter-btn:last-child { border-right: 0; } .ds-filter-btn:hover { color: var(--ink, #111418); background: var(--surface-alt, #e2e7ee); } .ds-filter-btn[aria-pressed='true'] { background: var(--ink, #111418); color: var(--surface, #f8fafc); } .ds-filter-btn:focus-visible { outline: 2px solid var(--focus, #b53a0e); outline-offset: 2px; }"
+    },
+    {
+      "name": "App Dossier Sheet",
+      "kind": "card",
+      "refersTo": "dossier-card",
+      "description": "Flat white technical project sheet with live orange dot and open hairline key-value rows.",
+      "html": "<article class=\"ds-dossier\"><header class=\"ds-dossier-head\"><h3>TerretaTrad</h3><span class=\"ds-dot\">GOOGLE PLAY · WEB</span></header><p class=\"ds-dossier-copy\">Traduce entre castellano y valenciano con revisión normativa.</p><dl class=\"ds-spec-rows\"><div><dt>Paquete</dt><dd>com.erikmp.terretatrad</dd></div><div><dt>Plataformas</dt><dd>Android · Web · iOS en desarrollo</dd></div></dl><a class=\"ds-dossier-link\" href=\"#\">Ver ficha de TerretaTrad →</a></article>",
+      "css": ".ds-dossier { display: flex; flex-direction: column; gap: 1.15rem; padding: 1.5rem; background: var(--surface, #f8fafc); border: 1px solid var(--line, #bfc7d1); border-radius: 0; font-family: 'Golos Text', sans-serif; } .ds-dossier:hover { border-color: var(--ink, #111418); } .ds-dossier-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.85rem; border-bottom: 1px solid var(--line-subtle, #d8dfe8); } .ds-dossier-head h3 { margin: 0; font-family: 'Archivo', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--ink, #111418); } .ds-dot { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent-ink, #b53a0e); } .ds-dot::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--accent, #d94f1e); } .ds-dossier-copy { margin: 0; color: #2c3540; font-size: 0.95rem; line-height: 1.5; } .ds-spec-rows { margin: 0; border-top: 1px solid var(--line-subtle, #d8dfe8); font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; } .ds-spec-rows div { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--line-subtle, #d8dfe8); } .ds-spec-rows dt { color: var(--muted, #475260); text-transform: uppercase; } .ds-spec-rows dd { margin: 0; color: var(--ink, #111418); font-weight: 500; } .ds-dossier-link { color: var(--accent-ink, #b53a0e); font-weight: 600; font-size: 0.92rem; text-decoration: none; }"
+    },
+    {
+      "name": "Top Specification Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Top rule-bound navigation header pairing monogram mark and animated underline links.",
+      "html": "<header class=\"ds-nav-bar\"><span class=\"ds-brand\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 64 64\" aria-hidden=\"true\"><rect width=\"64\" height=\"64\" rx=\"13\" fill=\"#24211e\"/><path d=\"M16 44V20h6l10 13 10-13h6v24h-5.5V29l-10.5 13.5L21.5 29v15H16Z\" fill=\"#f7f4ef\"/></svg>ESPECIFICACIÓN DE PRODUCTO</span><nav class=\"ds-nav\"><a href=\"#\">Proyectos</a><a href=\"#\">Enfoque</a><a href=\"#\">LinkedIn ↗</a></nav></header>",
+      "css": ".ds-nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 1.25rem; padding-block: 1rem; border-bottom: 1px solid var(--line, #bfc7d1); font-family: 'Golos Text', sans-serif; } .ds-brand { display: inline-flex; align-items: center; gap: 0.7rem; font-family: 'Archivo', sans-serif; font-size: 0.875rem; font-weight: 700; letter-spacing: 0.04em; color: var(--ink, #111418); } .ds-nav { display: flex; gap: 1.5rem; } .ds-nav a { position: relative; color: var(--muted, #475260); font-size: 0.9rem; font-weight: 500; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; } .ds-nav a::after { content: ''; position: absolute; left: 0; right: 0; bottom: 8px; height: 1.5px; background: var(--ink, #111418); transform: scaleX(0); transform-origin: left; transition: transform 160ms cubic-bezier(0.2, 0.8, 0.2, 1); } .ds-nav a:hover, .ds-nav a:focus-visible { color: var(--ink, #111418); } .ds-nav a:hover::after, .ds-nav a:focus-visible::after { transform: scaleX(1); } .ds-nav a:focus-visible { outline: 2px solid var(--focus, #b53a0e); outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Hoja Técnica Suiza",
+    "overview": "Este sistema trata cada pantalla como un pliego de especificación técnica impreso en mesa de dibujo fría. La jerarquía se apoya en contraste tipográfico de gran escala, líneas estructurales continuas y separación limpia entre campo gris de trabajo y fichas blancas sin ornamento.\n\nLas decisiones visuales evitan sombras proyectadas, degradados decorativos, tarjetas anidadas y rejillas genéricas de cajas iguales. La lectura técnica y las acciones hacia tienda conviven al mismo nivel visual mediante una retícula disciplinada, esquinas rectas y acento naranja restringido a puntos vivos y enlaces de acción.",
+    "keyCharacteristics": [
+      "Campo frío de papel técnico combinado con láminas blancas de bordes rectos y reglas de 1px.",
+      "Titular principal en una sola línea adaptado por contenedor, acompañado de metadatos monoespaciados estrictos.",
+      "Tablas de especificaciones abiertas con divisores horizontales finos en lugar de cajas encapsuladas.",
+      "Cero sombras, cero desenfoques y una única entrada de asentamiento inicial desactivable bajo prefers-reduced-motion."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Restraint Rule",
+        "body": "El acento naranja aparece solo en indicadores de estado activo, enlaces de detalle y foco; nunca en fondos completos ni títulos decorativos.",
+        "section": "colors"
+      },
+      {
+        "name": "The Verified Contrast Rule",
+        "body": "Todo texto naranja interactivo utiliza Signal Rust Ink (#b53a0e), nunca Signal Orange Dot (#d94f1e), garantizando legibilidad WCAG AA sobre blanco y gris técnico.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Discipline Rule",
+        "body": "JetBrains Mono se limita exclusivamente a metadatos técnicos, nombres de paquete e indicadores de estado; los controles de filtro y enlaces de regreso utilizan Golos Text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Single-Line Masthead Rule",
+        "body": "El título Erik Monsonís Pérez utiliza unidades de contenedor (cqi) con white-space: nowrap para mantenerse en una línea desde escritorio hasta móvil estándar.",
+        "section": "typography"
+      },
+      {
+        "name": "The Zero-Shadow Rule",
+        "body": "Ningún contenedor ni botón proyecta sombra en reposo o hover; el estado hover se comunica por desplazamiento sutil (translateY(-2px) en fichas, translateY(-1px) en acciones) y cambio de color de borde a #111418.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Flat-Sheet Rule",
+        "body": "Quedan prohibidas las cajas bordeadas anidadas dentro de otra caja; las tablas internas utilizan únicamente filetes horizontales o verticales abiertos de 1px solid.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do mantener todas las láminas, tablas de disponibilidad y cabeceras de detalle alineadas al mismo ancho de columna (76rem) para conservar bordes iguales.",
+      "Do usar filetes horizontales de 1px solid #d8dfe8 para tablas de especificaciones dentro de tarjetas en lugar de crear subcajas con fondo propio.",
+      "Do desactivar transiciones y la animación de entrada dossier-enter bajo @media (prefers-reduced-motion: reduce)."
+    ],
+    "donts": [
+      "Don't anidar elementos con borde y fondo distinto dentro de otro contenedor con borde.",
+      "Don't aplicar JetBrains Mono a botones de filtro ni enlaces de navegación conversacional; utilízalo solo en paquetes, claves y métricas técnicas.",
+      "Don't reintroducir tarjetas uniformes con esquinas redondeadas para secciones puramente informativas ni filtros con múltiples opciones que devuelvan resultados idénticos."
+    ]
+  }
+}

@@ -7,13 +7,20 @@
     <meta name="description" content="Traduce entre castellano y valenciano, guarda traducciones y compártelas.">
     <link rel="icon" type="image/svg+xml" href="/assets/monograma.svg">
     <link rel="apple-touch-icon" href="/assets/developer-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../site.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
     <div class="site">
       <header class="site-header">
         <a class="brand" href="../" aria-label="Erik Monsonís Pérez · Inicio">
-          <img src="/assets/monograma.svg" width="42" height="42" alt="">
+          <img src="/assets/monograma.svg" width="34" height="34" alt="">
+          <span>Especificación de producto</span>
         </a>
         <nav class="nav" aria-label="Navegación principal">
           <a href="../#apps">Proyectos</a>
@@ -22,18 +29,19 @@
         </nav>
       </header>
 
-      <main>
+      <main id="contenido">
         <article class="detail" aria-labelledby="app-title">
           <a class="back-link" href="../#apps"><span aria-hidden="true">←</span> Volver a proyectos</a>
 
           <header class="detail-header">
             <div class="detail-heading">
-              <img class="app-icon" src="/assets/terretatrad.webp" width="88" height="88" alt="">
-              <div class="detail-title-group">
-                <p class="eyebrow">Traducción castellano ↔ valenciano</p>
+              <div class="detail-title-row">
+                <img class="app-icon" src="/assets/terretatrad.webp" width="76" height="76" alt="">
                 <h1 id="app-title">TerretaTrad</h1>
               </div>
+              <span class="status-dot">Google Play · Web</span>
             </div>
+
             <p class="detail-copy">Traduce entre castellano y valenciano, guarda traducciones y compártelas.</p>
 
             <div class="detail-links store-badges">
@@ -73,28 +81,40 @@
             </div>
           </header>
 
-          <section class="detail-section detail-overview" aria-labelledby="overview-title">
+          <section class="detail-section" aria-labelledby="overview-title">
             <h2 id="overview-title">Qué es TerretaTrad</h2>
-            <p>TerretaTrad es una aplicación de traducción centrada en el valenciano para móvil y web. Está diseñada para responder en segundos tanto en consultas rápidas del día a día como en la redacción de textos formales, manteniendo una interfaz limpia adaptada al uso frecuente.</p>
-            <p>Antes de traducir, aplica revisión ortográfica y gramatical para obtener resultados más naturales y ajustados a la normativa valenciana, evitando errores habituales en entradas escritas con prisa.</p>
+            <div class="detail-overview">
+              <div class="detail-overview-prose">
+                <p>TerretaTrad es una aplicación de traducción centrada en el valenciano para móvil y web. Está diseñada para responder en segundos tanto en consultas rápidas del día a día como en la redacción de textos formales, manteniendo una interfaz limpia adaptada al uso frecuente.</p>
+                <p>Antes de traducir, aplica revisión ortográfica y gramatical para obtener resultados más naturales y ajustados a la normativa valenciana, evitando errores habituales en entradas escritas con prisa.</p>
+              </div>
+              <aside class="detail-spec-sheet" aria-label="Resumen técnico de TerretaTrad">
+                <dl class="spec-table spec-table--sheet">
+                  <div class="spec-row"><dt>Paquete</dt><dd>com.erikmp.terretatrad</dd></div>
+                  <div class="spec-row"><dt>Idiomas</dt><dd>Castellano ↔ Valenciano</dd></div>
+                  <div class="spec-row"><dt>Motor UI</dt><dd>Jetpack Compose</dd></div>
+                  <div class="spec-row"><dt>Núcleo</dt><dd>Kotlin Multiplatform</dd></div>
+                </dl>
+              </aside>
+            </div>
           </section>
 
           <section class="detail-section" aria-labelledby="features-title">
             <h2 id="features-title">Funcionalidades principales</h2>
-            <div class="feature-grid">
-              <article class="feature-card">
+            <div class="feature-ledger">
+              <article class="feature-item">
                 <h3>Traducción instantánea</h3>
                 <p>Cambio de sentido entre castellano y valenciano con un toque, pensado para consultar palabras, frases completas o textos largos.</p>
               </article>
-              <article class="feature-card">
+              <article class="feature-item">
                 <h3>Corrección previa al traducir</h3>
                 <p>Detección y ajuste ortográfico y gramatical previo para mejorar la precisión del resultado según la normativa lingüística valenciana.</p>
               </article>
-              <article class="feature-card">
+              <article class="feature-item">
                 <h3>Guardadas e historial</h3>
                 <p>Acceso rápido a traducciones recientes y colección personal de expresiones guardadas para recuperarlas sin volver a escribir.</p>
               </article>
-              <article class="feature-card">
+              <article class="feature-item">
                 <h3>Copia y compartición directa</h3>
                 <p>Acciones inmediatas para copiar la traducción al portapapeles o enviarla a otras aplicaciones de mensajería y correo.</p>
               </article>
@@ -113,7 +133,7 @@
           </section>
 
           <aside class="other-project" aria-label="Otro proyecto del estudio">
-            <p class="eyebrow">Siguiente proyecto</p>
+            <h2>Siguiente proyecto</h2>
             <a class="other-project-link" href="../mdnote/">
               <img class="app-icon" src="/assets/mdnote.webp" width="52" height="52" alt="">
               <span>
@@ -128,7 +148,11 @@
 
       <footer class="site-footer">
         <small>© 2026 Erik Monsonís Pérez</small>
-        <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
+        <div class="footer-links">
+          <a href="../">Inicio</a>
+          <a href="../mdnote/">mdNote</a>
+          <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
       </footer>
     </div>
   </body>

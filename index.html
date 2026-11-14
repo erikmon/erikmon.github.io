@@ -7,13 +7,20 @@
     <meta name="description" content="Portfolio de Erik Monsonís Pérez, desarrollador de aplicaciones especializado en Android.">
     <link rel="icon" type="image/svg+xml" href="/assets/monograma.svg">
     <link rel="apple-touch-icon" href="/assets/developer-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css">
+    <script src="site.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
     <div class="site">
       <header class="site-header">
         <a class="brand" href="./" aria-label="Erik Monsonís Pérez · Inicio">
-          <img src="/assets/monograma.svg" width="42" height="42" alt="">
+          <img src="/assets/monograma.svg" width="34" height="34" alt="">
+          <span>Especificación de producto</span>
         </a>
         <nav class="nav" aria-label="Navegación principal">
           <a href="#apps">Proyectos</a>
@@ -22,58 +29,59 @@
         </nav>
       </header>
 
-      <main>
+      <main id="contenido">
         <section class="intro" aria-labelledby="intro-title">
-          <p class="eyebrow">Estudio independiente · Producto móvil</p>
           <h1 id="intro-title">Erik Monsonís Pérez</h1>
-          <p class="intro-copy">Desarrollador de aplicaciones especializado en Android. Creo aplicaciones propias rápidas, claras y sin fricción, en evolución hacia iOS y web.</p>
-
-          <dl class="intro-meta">
-            <div>
-              <dt>Especialidad</dt>
-              <dd>Android nativo · Kotlin &amp; Jetpack Compose</dd>
-            </div>
-            <div>
-              <dt>Arquitectura</dt>
-              <dd>Clean Architecture · Kotlin Multiplatform</dd>
-            </div>
-            <div>
-              <dt>Catálogo</dt>
-              <dd>2 aplicaciones publicadas · iOS en desarrollo</dd>
-            </div>
-          </dl>
+          <div class="intro-spec">
+            <p class="intro-copy">Desarrollador de aplicaciones especializado en Android. Aplicaciones propias rápidas, claras y sin fricción, en evolución hacia iOS y web.</p>
+            <dl class="intro-meta">
+              <div class="spec-cell">
+                <dt>Especialidad</dt>
+                <dd>Android nativo <span class="spec-sub">Kotlin · Jetpack Compose</span></dd>
+              </div>
+              <div class="spec-cell">
+                <dt>Multiplataforma</dt>
+                <dd>Kotlin Multiplatform <span class="spec-sub">2 apps publicadas · iOS en desarrollo</span></dd>
+              </div>
+            </dl>
+          </div>
         </section>
 
         <section id="apps" class="section-block" aria-labelledby="apps-title">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">Aplicaciones propias</p>
               <h2 id="apps-title">Proyectos publicados</h2>
             </div>
-            <p class="section-summary">Dos productos propios pensados para resolver necesidades concretas sin fricción ni ruido visual.</p>
+            <div class="platform-filter" role="group" aria-label="Filtrar proyectos por disponibilidad">
+              <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">Todas (2)</button>
+              <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Con web (1)</button>
+              <button type="button" class="filter-btn" data-filter="mobile" aria-pressed="false">Solo móvil (1)</button>
+            </div>
+            <p id="filter-status" class="sr-only" aria-live="polite">Mostrando las 2 aplicaciones publicadas.</p>
           </div>
 
           <div class="project-grid">
-            <article class="project-card">
+            <article class="project-card" data-scope="all web">
               <header class="project-card-header">
-                <img class="app-icon" src="/assets/terretatrad.webp" width="72" height="72" alt="">
-                <div class="project-card-heading">
-                  <ul class="platform-list" role="list" aria-label="Plataformas de TerretaTrad">
-                    <li class="platform-pill">Android</li>
-                    <li class="platform-pill">Web</li>
-                    <li class="platform-pill platform-pill--muted">iOS en desarrollo</li>
-                  </ul>
+                <div class="project-identity">
+                  <img class="app-icon" src="/assets/terretatrad.webp" width="56" height="56" alt="">
                   <h3><a href="/terretatrad/">TerretaTrad</a></h3>
                 </div>
+                <span class="status-dot">Google Play · Web</span>
               </header>
 
               <div class="project-card-body">
-                <p class="project-card-summary">Traduce entre castellano y valenciano. Herramienta pensada para consulta rápida y redacción diaria, con revisión ortográfica y gramatical previa según la normativa valenciana, historial local y colección de traducciones guardadas.</p>
-                <ul class="feature-list">
-                  <li>Traducción bidireccional entre castellano y valenciano.</li>
-                  <li>Corrección ortográfica y gramatical previa al traducir.</li>
-                  <li>Historial reciente, favoritos guardados y acceso desde web.</li>
-                </ul>
+                <p class="project-card-summary">Traduce entre castellano y valenciano. Consulta rápida y redacción diaria con revisión ortográfica y gramatical previa según la normativa valenciana, historial local y favoritas guardadas.</p>
+                <dl class="spec-table">
+                  <div class="spec-row">
+                    <dt>Paquete</dt>
+                    <dd>com.erikmp.terretatrad</dd>
+                  </div>
+                  <div class="spec-row">
+                    <dt>Plataformas</dt>
+                    <dd>Android · Web · iOS en desarrollo</dd>
+                  </div>
+                </dl>
               </div>
 
               <footer class="project-card-footer">
@@ -101,29 +109,31 @@
                     </span>
                   </a>
                 </div>
-                <a class="card-detail-link" href="/terretatrad/">Ver ficha<span class="sr-only"> de TerretaTrad</span> <span aria-hidden="true">→</span></a>
+                <a class="card-detail-link" href="/terretatrad/">Ver ficha de TerretaTrad <span class="arrow" aria-hidden="true">→</span></a>
               </footer>
             </article>
 
-            <article class="project-card">
+            <article class="project-card" data-scope="all mobile">
               <header class="project-card-header">
-                <img class="app-icon" src="/assets/mdnote.webp" width="72" height="72" alt="">
-                <div class="project-card-heading">
-                  <ul class="platform-list" role="list" aria-label="Plataformas de mdNote">
-                    <li class="platform-pill">Android</li>
-                    <li class="platform-pill platform-pill--muted">iOS en desarrollo</li>
-                  </ul>
+                <div class="project-identity">
+                  <img class="app-icon" src="/assets/mdnote.webp" width="56" height="56" alt="">
                   <h3><a href="/mdnote/">mdNote</a></h3>
                 </div>
+                <span class="status-dot">Google Play</span>
               </header>
 
               <div class="project-card-body">
-                <p class="project-card-summary">Escribe y edita notas en Markdown. Editor ligero con vista previa enriquecida en tiempo real que trabaja directamente sobre archivos .md locales en texto plano, con autoguardado y exportación a HTML, PDF o texto.</p>
-                <ul class="feature-list">
-                  <li>Edición rápida en texto plano sin formatos propietarios.</li>
-                  <li>Vista previa de tablas, código, listas y enlaces.</li>
-                  <li>Exportación y compartición directa en Markdown, HTML o PDF.</li>
-                </ul>
+                <p class="project-card-summary">Escribe y edita notas en Markdown. Editor ligero con vista previa enriquecida en tiempo real sobre archivos .md locales en texto plano, autoguardado y exportación a HTML, PDF o texto.</p>
+                <dl class="spec-table">
+                  <div class="spec-row">
+                    <dt>Paquete</dt>
+                    <dd>com.erikmp.mdnote</dd>
+                  </div>
+                  <div class="spec-row">
+                    <dt>Plataformas</dt>
+                    <dd>Android · iOS en desarrollo</dd>
+                  </div>
+                </dl>
               </div>
 
               <footer class="project-card-footer">
@@ -141,44 +151,64 @@
                     </span>
                   </a>
                 </div>
-                <a class="card-detail-link" href="/mdnote/">Ver ficha<span class="sr-only"> de mdNote</span> <span aria-hidden="true">→</span></a>
+                <a class="card-detail-link" href="/mdnote/">Ver ficha de mdNote <span class="arrow" aria-hidden="true">→</span></a>
               </footer>
             </article>
           </div>
         </section>
 
-        <section id="enfoque" class="section-block" aria-labelledby="enfoque-title">
+        <section id="enfoque" class="section-block section-block--spaced" aria-labelledby="enfoque-title">
           <div class="section-heading">
-            <div>
-              <p class="eyebrow">Criterio técnico</p>
-              <h2 id="enfoque-title">Enfoque y arquitectura</h2>
-            </div>
+            <h2 id="enfoque-title">Enfoque y arquitectura</h2>
             <p class="section-summary">Cómo planteo cada aplicación desde la idea inicial hasta el mantenimiento continuo en producción.</p>
           </div>
 
-          <div class="pillars-grid">
-            <article class="pillar-card">
-              <p class="pillar-index">01</p>
+          <div class="pillars-ledger">
+            <article class="pillar-item">
               <h3>Producto útil y directo</h3>
               <p>Interfaces claras orientadas a la tarea principal. Cada aplicación prioriza la velocidad de respuesta, el contraste legible y flujos sin pasos innecesarios.</p>
             </article>
-            <article class="pillar-card">
-              <p class="pillar-index">02</p>
+            <article class="pillar-item">
               <h3>Base Android y multiplataforma</h3>
               <p>Desarrollo nativo sobre Kotlin y Jetpack Compose con separación de capas, ampliando la lógica compartida mediante Kotlin Multiplatform para llevar los proyectos también a iOS.</p>
             </article>
-            <article class="pillar-card">
-              <p class="pillar-index">03</p>
+            <article class="pillar-item">
               <h3>Datos locales y fiabilidad</h3>
               <p>Cuidado por la persistencia local, el formato abierto cuando importa la portabilidad y las pruebas automatizadas antes de cada entrega en tienda.</p>
             </article>
+          </div>
+
+          <div class="arch-flow" aria-label="Flujo de arquitectura multiplataforma">
+            <div class="arch-core">
+              <strong>Núcleo compartido</strong>
+              <span>Kotlin · Clean Architecture · KMP</span>
+            </div>
+            <div class="arch-bridge" aria-hidden="true"></div>
+            <div class="arch-targets">
+              <div class="arch-target arch-target--live">
+                <strong>Android</strong>
+                <span>Google Play · Jetpack Compose</span>
+              </div>
+              <div class="arch-target arch-target--live">
+                <strong>Web</strong>
+                <span>terretatrad.com</span>
+              </div>
+              <div class="arch-target">
+                <strong>iOS</strong>
+                <span>En desarrollo</span>
+              </div>
+            </div>
           </div>
         </section>
       </main>
 
       <footer class="site-footer">
         <small>© 2026 Erik Monsonís Pérez</small>
-        <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
+        <div class="footer-links">
+          <a href="/terretatrad/">TerretaTrad</a>
+          <a href="/mdnote/">mdNote</a>
+          <a href="https://www.linkedin.com/in/erikmonsonisperez/">LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
       </footer>
     </div>
   </body>

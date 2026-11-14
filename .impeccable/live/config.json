@@ -1,0 +1,7 @@
+{
+  "files": ["index.html", "terretatrad/index.html", "mdnote/index.html"],
+  "exclude": ["googlea2b8e85e238fd56b.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

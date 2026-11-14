@@ -32,7 +32,7 @@ def parse(path):
 
 class StaticSiteTests(unittest.TestCase):
     def test_required_static_files_are_present(self):
-        for path in ("app-ads.txt", "googlea2b8e85e238fd56b.html", "styles.css"):
+        for path in ("app-ads.txt", "googlea2b8e85e238fd56b.html", "styles.css", "site.js"):
             self.assertTrue((ROOT / path).is_file(), path)
 
     def test_detail_routes_use_directory_indexes(self):
@@ -44,6 +44,7 @@ class StaticSiteTests(unittest.TestCase):
         parser = parse(path)
         html = path.read_text(encoding="utf-8")
         self.assertIn('href="styles.css"', html)
+        self.assertIn('src="site.js"', html)
         self.assertIn("<title>Erik Monsonís Pérez · Desarrollo de aplicaciones</title>", html)
         self.assertIn(
             '<meta name="description" content="Portfolio de Erik Monsonís Pérez, desarrollador de aplicaciones especializado en Android.">',
@@ -58,7 +59,6 @@ class StaticSiteTests(unittest.TestCase):
             [link.get("href") for link in parser.attrs["a"]],
         )
         self.assertIn("<main", html)
-        self.assertNotIn("<script", html.lower())
         self.assertNotIn("<style", html.lower())
 
     def test_home_app_descriptions_are_short_and_factual(self):
@@ -144,16 +144,15 @@ class StaticSiteTests(unittest.TestCase):
                 self.assertIn("https://terretatrad.com/", links)
             self.assertIn(package_name, html)
             self.assertIn("<main", html)
-            self.assertNotIn("<script", html.lower())
             self.assertNotIn("<style", html.lower())
 
-    def test_shared_styles_are_light_editorial_and_accessible(self):
+    def test_shared_styles_are_swiss_technical_and_accessible(self):
         css = (ROOT / "styles.css").read_text(encoding="utf-8")
-        self.assertIn("#f7f4ef", css)
-        self.assertIn("#24211e", css)
-        self.assertIn("#a24d30", css)
+        self.assertIn("#eceff3", css)
+        self.assertIn("#111418", css)
+        self.assertIn("#d94f1e", css)
         self.assertIn(":focus-visible", css)
-        self.assertIn("subgrid", css)
+        self.assertIn("prefers-reduced-motion", css)
         self.assertNotIn("radial-gradient", css)
         self.assertNotIn("backdrop-filter", css)
         self.assertNotIn("box-shadow", css)
@@ -161,7 +160,7 @@ class StaticSiteTests(unittest.TestCase):
     def test_local_links_target_existing_files(self):
         for path in [ROOT / "index.html", ROOT / "terretatrad/index.html", ROOT / "mdnote/index.html"]:
             parser = parse(path)
-            urls = [attrs.get(attr) for tag, attr in (("a", "href"), ("link", "href"), ("img", "src"))
+            urls = [attrs.get(attr) for tag, attr in (("a", "href"), ("link", "href"), ("img", "src"), ("script", "src"))
                     for attrs in parser.attrs.get(tag, [])]
             for url in urls:
                 if not url or url.startswith(("http://", "https://", "mailto:", "#")):
